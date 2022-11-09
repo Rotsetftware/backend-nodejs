@@ -19,7 +19,10 @@ app.get("/", (req, res) => {
     res.json({ "Message": "Videojuego" })
 });
 
-app.use("/users", require('./routes/users'));
+app.use("/juegos", require('./routes/juegos'));
+app.use("/niveles", require('./routes/niveles'));
+app.use("/preguntas", require('./routes/preguntas'));
+app.use("/historial", require('./routes/historial'));
 
 // Starting the server
 app.listen(app.get('port'), () => {

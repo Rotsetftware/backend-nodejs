@@ -3,17 +3,17 @@ const fs = require('fs');
 
 const mysqlConnection = mysql.createConnection({
 
-    // host: 'localhost',
-    // user: 'root',
-    // password: '',
-    // database: 'videojuego'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'plataforma'
 
-  host:"asesorias.mysql.database.azure.com",
-  user:"braquetes",
-  password:"Rodo2507137946",
-  database:"videojuego",
-  port:3306,
-  ssl:{ca:fs.readFileSync("DigiCertGlobalRootCA.crt.pem")}
+//   host:"asesorias.mysql.database.azure.com",
+//   user:"braquetes",
+//   password:"Rodo2507137946",
+//   database:"videojuego",
+//   port:3306,
+//   ssl:{ca:fs.readFileSync("DigiCertGlobalRootCA.crt.pem")}
 
 });
 
