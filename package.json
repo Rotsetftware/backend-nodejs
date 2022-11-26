@@ -1,7 +1,7 @@
 {
-  "name": "backend-asesorias",
+  "name": "backend-juegos",
   "version": "1.0.0",
-  "description": "Plataforma de Asesorias con Angular y NodeJS",
+  "description": "Plataforma de juegos con Angular y NodeJS",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
