@@ -58,4 +58,76 @@ router.post("/create", (req, res) => {
   );
 });
 
+// Comprobar codigo de un usuario
+router.get('/correcto/:matricula/:sala', (req, res) => {
+  const { matricula,sala } = req.params;
+  console.log(matricula);
+  console.log(sala);
+  mysqlConnection.query(
+    "SELECT * FROM historial WHERE matricula  = ? && sala = ?",
+    [matricula, sala],
+    (err, rows, fields) => {
+      if (!err) {
+        if (rows != "") {
+          console.log(rows[0].correctas);
+          const correcta = rows[0].correctas;
+          const puntajeTotal = rows[0].puntajeTotal;
+          mysqlConnection.query('UPDATE `historial` SET `correctas` = ?, `puntajeTotal` = ? WHERE `matricula` = ? && `sala` = ?', [correcta+1,puntajeTotal+10, matricula, sala], (err, rows, fields) => {
+            if (!err) {
+              if (rows) {
+                res.json({ status: 'Usuario registrado' });
+              } else {
+                res.json({
+                  status: 'Error',
+                })
+              }
+            }
+          });
+
+        } else {
+          res.json({ status: "Juego no encontrado" });
+        }
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+
+// Comprobar codigo de un usuario
+router.get('/incorrecto/:matricula/:sala', (req, res) => {
+  const { matricula,sala } = req.params;
+  console.log(matricula);
+  console.log(sala);
+  mysqlConnection.query(
+    "SELECT * FROM historial WHERE matricula  = ? && sala = ?",
+    [matricula, sala],
+    (err, rows, fields) => {
+      if (!err) {
+        if (rows != "") {
+          console.log(rows[0].incorrectas);
+          const incorrecta = rows[0].incorrectas;
+          mysqlConnection.query('UPDATE `historial` SET `incorrectas` = ? WHERE `matricula` = ? && `sala` = ?', [incorrecta+1, matricula, sala], (err, rows, fields) => {
+            if (!err) {
+              if (rows) {
+                res.json({ status: 'Usuario registrado' });
+              } else {
+                res.json({
+                  status: 'Error',
+                })
+              }
+            }
+          });
+
+        } else {
+          res.json({ status: "Juego no encontrado" });
+        }
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+
+
 module.exports = router;
