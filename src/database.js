@@ -8,12 +8,12 @@ const mysqlConnection = mysql.createConnection({
     // password: '',
     // database: 'plataforma'
 
-  host:"asesorias.mysql.database.azure.com",
+  host:"braqueteserver.mysql.database.azure.com",
   user:"braquetes",
-  password:"Rodo2507137946",
-  database:"videojuego",
+  password:"Dif*137946",
+  database:"plataforma",
   port:3306,
-  ssl:{ca:fs.readFileSync("DigiCertGlobalRootCA.crt.pem")}
+//   ssl:{ca:fs.readFileSync("DigiCertGlobalRootCA.crt.pem")}
 
 });
 
